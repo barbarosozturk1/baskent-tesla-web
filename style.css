@@ -581,7 +581,6 @@ section {
   gap: 24px;
 }
 
-/* Tekli kalan kartlar (Görkem Güneri) için genişlik sınırlaması */
 .staff-grid .staff-card:only-child {
   max-width: 380px;
   width: 100%;
@@ -638,7 +637,7 @@ section {
   line-height: 1.5;
 }
 
-/* 9. İletişim (Contact) */
+/* 9. İletişim (Contact) & Düzeltilmiş Simgeler */
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
@@ -655,19 +654,33 @@ section {
 .info-item {
   display: flex;
   gap: 16px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .info-icon {
   width: 48px;
   height: 48px;
+  min-width: 48px;
   background: rgba(255, 26, 26, 0.1);
+  border: 1px solid rgba(255, 26, 26, 0.2);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary);
   flex-shrink: 0;
+}
+
+.info-icon svg, 
+.info-icon i {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+.info-item strong {
+  display: block;
+  white-space: nowrap;
 }
 
 .contact-form-card {
@@ -772,7 +785,7 @@ section {
   color: var(--primary);
 }
 
-/* 11. Mobil Uyum (Responsive) */
+/* 11. Mobil Uyum (Responsive) - Tam Korumalı */
 @media (max-width: 992px) {
   .hero-title {
     font-size: 2.8rem;
@@ -809,6 +822,28 @@ section {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .info-item {
+    align-items: center;
+  }
+
+  .info-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+  }
+
+  .info-icon svg,
+  .info-icon i {
+    width: 20px;
+    height: 20px;
+  }
+
+  .info-item strong {
+    font-size: 0.88rem;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .footer-content {
