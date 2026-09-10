@@ -1,43 +1,36 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // 1. Lucide İkonlarını Başlat
-  if (typeof lucide !== 'undefined') {
-    lucide.createIcons();
-  }
+/* Spor & Tesla Konseptli Derin Arka Plan */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* İnce Siber Izgara Deseni */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -2;
+  pointer-events: none;
+}
 
-  // 2. Navbar Scroll Efekti (Sayfa kaydırıldıkça arka plan koyulaşır)
-  const navbar = document.getElementById("navbar");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  });
+body::after {
+  content: '';
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  /* Odak Noktası Kırmızı Enerji Işığı */
+  background: radial-gradient(circle, rgba(255, 26, 26, 0.15) 0%, rgba(12, 12, 15, 0) 70%);
+  z-index: -1;
+  pointer-events: none;
+  animation: pulseGlow 8s infinite alternate ease-in-out;
+}
 
-  // 3. İstatistik Sayı Sayma Animasyonu (150+ Lisanslı Sporcu / 10+ Antrenör)
-  const animateStats = () => {
-    const stats = document.querySelectorAll(".stat-number");
-    const targets = [150, 10]; // Hedef değerler
-
-    stats.forEach((stat, index) => {
-      const target = targets[index] || parseInt(stat.innerText) || 100;
-      let count = 0;
-      const duration = 2000; // 2 saniye
-      const increment = Math.ceil(target / (duration / 16));
-
-      const updateCounter = () => {
-        count += increment;
-        if (count >= target) {
-          stat.innerText = target;
-        } else {
-          stat.innerText = count;
-          requestAnimationFrame(updateCounter);
-        }
-      };
-
-      updateCounter();
-    });
-  };
-
-  animateStats();
-});
+@keyframes pulseGlow {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); }
+}
